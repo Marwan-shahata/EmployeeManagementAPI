@@ -1,0 +1,37 @@
+@host = http://localhost:5120
+
+### Create (201)
+POST {{host}}/api/employees
+Content-Type: application/json
+
+{ "name": "Ahmed Ali", "email": "ahmed@company.com", "department": "Engineering", "salary": 15000.50, "hireDate": "2024-03-01" }
+
+### Get all (200)
+GET {{host}}/api/employees
+
+### Get one (200 / 404)
+GET {{host}}/api/employees/1
+
+### Update (200 / 404 / 409)
+PUT {{host}}/api/employees/1
+Content-Type: application/json
+
+{ "name": "Ahmed Ali", "email": "ahmed@company.com", "department": "Management", "salary": 20000, "hireDate": "2024-03-01" }
+
+### Delete (204 / 404)
+DELETE {{host}}/api/employees/1
+
+### Validation error (400)
+POST {{host}}/api/employees
+Content-Type: application/json
+
+{ "name": "A", "email": "not-an-email", "department": "", "salary": 0, "hireDate": "2024-03-01" }
+
+### Performance
+GET {{host}}/api/performance/sequential
+
+###
+GET {{host}}/api/performance/concurrent
+
+###
+GET {{host}}/api/performance/compare
